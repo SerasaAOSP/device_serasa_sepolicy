@@ -31,6 +31,12 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
     device/serasa/sepolicy/common/vendor
 endif
 
+TARGET_SUPPORTS_GOOGLE_BATTERY ?= false
+ifneq ($(TARGET_SUPPORTS_GOOGLE_BATTERY), true)
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    device/serasa/sepolicy/common/googlebattery
+endif
+
 # Selectively include legacy rules defined by the products
 -include device/serasa/sepolicy/legacy-common/sepolicy.mk
 
